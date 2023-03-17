@@ -16,6 +16,12 @@ function UpdateProfile({ userInfo }) {
   const [gender, setGender] = useState(userInfo.gender);
   const [email, setEmail] = useState(userInfo.email);
 
+  const initialValues = {
+    fullName: userInfo.fullName,
+    gender: userInfo.gender,
+    email: userInfo.email
+  }
+
   const id = userInfo.id;
   const userId = userInfo.id;
   const username = userInfo.username;
@@ -25,11 +31,7 @@ function UpdateProfile({ userInfo }) {
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({
-      fullName,
-      gender,
-      email,
-    });
+    form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
     dispatch(updateUserStart({ id, formValues }));
@@ -70,6 +72,7 @@ function UpdateProfile({ userInfo }) {
             span: 14,
           }}
           layout="horizontal"
+          initialValues={initialValues}
         >
           <Form.Item
             label="Full name"

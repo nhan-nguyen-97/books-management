@@ -24,6 +24,13 @@ function AddBook({ listAuthors }) {
   const [author, setAuthor] = useState("");
   const [published, setPublished] = useState("");
 
+  const initialValues = {
+    name: "",
+    price: 0,
+    author: "",
+    published: "",
+  };
+
   const formValues = { name, price, author, published };
 
   const showModal = () => {
@@ -49,7 +56,7 @@ function AddBook({ listAuthors }) {
   const handleSubmit = () => {
     if (name) {
       dispatch(createBookStart(formValues));
-      toast.success("Add book successfully")
+      toast.success("Add book successfully");
       setIsModalOpen(false);
       setTimeout(() => {
         dispatch(loadBooksStart());
@@ -85,6 +92,7 @@ function AddBook({ listAuthors }) {
           style={{
             maxWidth: 600,
           }}
+          initialValues={initialValues}
         >
           <Form.Item
             label="Name"
@@ -105,7 +113,6 @@ function AddBook({ listAuthors }) {
               min={0}
               max={10000000}
               step={1000}
-              defaultValue={0}
               style={{ width: 275 }}
               onChange={(value) => setPrice(value)}
             />

@@ -43,11 +43,7 @@ function EditBook({ bookData, authorData }) {
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({
-      name,
-      price,
-      author,
-    });
+    form.setFieldsValue(initialValues);
   };
 
   // Get data Authors for Add new Book
@@ -134,7 +130,6 @@ function EditBook({ bookData, authorData }) {
           </Form.Item>
           <Form.Item label="Published" name={"published"}>
             <DatePicker
-              // defaultValue={bookData.published}
               format="YYYY"
               value={published}
               onChange={(data) => setPublished(data.$y)}

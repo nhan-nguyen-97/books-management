@@ -142,7 +142,7 @@
       "username": "admin",
       "password": "admin",
       "fullName": "Nhân Nguyễn",
-      "gender": "female",
+      "gender": "male",
       "email": "nhannguyen@gmail.com"
     },
     {
@@ -152,13 +152,6 @@
       "fullName": "Nhân Nguyễn",
       "gender": "female",
       "email": "nhannguyen@gmail.com"
-    },
-    {
-      "username": "admin213123",
-      "fullName": "123123123",
-      "gender": "female",
-      "email": "",
-      "id": 5
     }
   ]
 }
