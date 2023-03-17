@@ -10,6 +10,7 @@ import MainContent from "../../components/MainLayout/MainContent";
 import MainLayout from "../../components/MainLayout";
 import { PrivateRoute } from "../../Common/PrivateRoute";
 import UpdateProfile from "./UpdateProfile/UpdateProfile";
+import ChangePassword from "./ChangePassword/ChangePassword";
 
 function Profile() {
   const userInfo = JSON.parse(localStorage.getItem("user_profile"));
@@ -41,6 +42,7 @@ function Profile() {
                 <Descriptions.Item label="Avatar">No Image</Descriptions.Item>
               </Descriptions>
               <UpdateProfile userInfo={users} />
+              <ChangePassword userInfo={users} />
             </div>
           </div>
         </MainContent>

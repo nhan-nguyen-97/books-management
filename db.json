@@ -140,9 +140,9 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "admin",
+      "password": "123123",
       "fullName": "Nhân Nguyễn",
-      "gender": "male",
+      "gender": "female",
       "email": "nhannguyen@gmail.com"
     },
     {
