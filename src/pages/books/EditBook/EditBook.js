@@ -31,18 +31,20 @@ function EditBook({ bookData, authorData }) {
   const [author, setAuthor] = useState(bookData.author);
   const [published, setPublished] = useState(bookData.published);
 
-  const yearPublished = isNaN(dayjs(`${bookData.published}`, "YYYY").$y) ? "" : dayjs(`${bookData.published}`, "YYYY").$y;
-  
+  const yearPublished = isNaN(dayjs(`${bookData.published}`, "YYYY").$y)
+    ? ""
+    : dayjs(`${bookData.published}`, "YYYY").$y;
+
   const initialValues = {
     name: bookData.name,
     price: bookData.price,
     author: bookData.author,
     published: !isNaN(yearPublished) ? "" : yearPublished,
   };
-  
+
   const formValues = { name, price, author, published };
   const id = bookData.id;
-  
+
   const showModal = () => {
     setIsModalOpen(true);
     console.log(yearPublished);
@@ -60,7 +62,7 @@ function EditBook({ bookData, authorData }) {
   });
 
   const changeYear = (data) => {
-    setPublished(data.$y)
+    setPublished(data.$y);
   };
 
   const handleSubmit = () => {
@@ -76,6 +78,10 @@ function EditBook({ bookData, authorData }) {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
+    setName(bookData.name);
+    setPrice(bookData.price);
+    setAuthor(bookData.author);
+    setPublished(yearPublished);
     setIsModalOpen(false);
   };
 

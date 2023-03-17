@@ -46,7 +46,7 @@ function EditAuthor({ authorData }) {
   };
   const handleSubmit = () => {
     dispatch(updateAuthorStart({ id, formValues }));
-    toast.success("Update author successfully")
+    toast.success("Update author successfully");
     setIsModalOpen(false);
     setTimeout(() => {
       dispatch(loadAuthorsStart());
@@ -57,6 +57,11 @@ function EditAuthor({ authorData }) {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
+    setName(authorData.name);
+    setDOB(dayjs(`${authorData.DOB}`, "DD/MM/YYYY"));
+    setDied(dayjs(`${authorData.died}`, "DD/MM/YYYY"));
+    setGender(authorData.gender);
+    setPlaceOrigin(authorData.placeOrigin);
     setIsModalOpen(false);
   };
 

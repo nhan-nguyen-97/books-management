@@ -27,14 +27,10 @@ function EditUser({ userData }) {
     gender: userData.gender,
     email: userData.email,
   };
-
   const formValues = { username, fullName, gender, email };
-  console.log(formValues.gender);
-
   const showModal = () => {
     setIsModalOpen(true);
     form.setFieldsValue(initialValues);
-    console.log(initialValues.gender);
   };
   const handleSubmit = () => {
     if (fullName) {
