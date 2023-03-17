@@ -76,6 +76,13 @@
       "author": "Ngô Tất Tố",
       "published": 1968,
       "id": 12
+    },
+    {
+      "name": "2313123",
+      "price": 452345,
+      "author": "",
+      "published": "",
+      "id": 13
     }
   ],
   "authors": [
@@ -138,20 +145,26 @@
   ],
   "users": [
     {
-      "id": 1,
       "username": "admin",
-      "password": "123123",
-      "fullName": "Nhân Nguyễn",
-      "gender": "female",
-      "email": "nhannguyen@gmail.com"
+      "fullName": "Nguyễn Trọng Nhân",
+      "gender": "male",
+      "email": "nhan030797@gmail.com",
+      "id": 1
     },
     {
-      "id": 2,
       "username": "admin2",
-      "password": "123123",
       "fullName": "Nhân Nguyễn",
       "gender": "female",
-      "email": "nhannguyen@gmail.com"
+      "email": "nhannguyen@gmail.com",
+      "id": 2
+    },
+    {
+      "username": "admin3",
+      "password": "123123",
+      "fullName": "Admin 3",
+      "gender": "male",
+      "email": "",
+      "id": 3
     }
   ]
 }

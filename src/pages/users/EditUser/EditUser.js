@@ -15,30 +15,34 @@ function EditUser({ userData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const username = userData.username;
   const [fullName, setFullName] = useState(userData.fullName);
   const [gender, setGender] = useState(userData.gender);
   const [email, setEmail] = useState(userData.email);
+  const id = userData.id;
+  const username = userData.username;
+
+  const initialValues = {
+    username,
+    fullName: userData.fullName,
+    gender: userData.gender,
+    email: userData.email
+  }
 
   const formValues = { username, fullName, gender, email };
-  const id = userData.id;
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({
-      username,
-      fullName,
-      gender,
-      email,
-    });
+    form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
-    dispatch(updateUserStart({ id, formValues }));
-    setIsModalOpen(false);
-    setTimeout(() => {
-      dispatch(loadUsersStart());
-      toast.success("Update user successfully")
-    }, 200);
+    if (fullName) {
+      dispatch(updateUserStart({ id, formValues }));
+      setIsModalOpen(false);
+      setTimeout(() => {
+        dispatch(loadUsersStart());
+        toast.success("Update user successfully");
+      }, 200);
+    }
   };
   const handleOk = () => {
     setIsModalOpen(false);
@@ -72,6 +76,7 @@ function EditUser({ userData }) {
             span: 14,
           }}
           layout="horizontal"
+          initialValues={initialValues}
         >
           <Form.Item
             label="Username"
@@ -125,6 +130,11 @@ function EditUser({ userData }) {
                 margin: "0 8px",
               }}
               onClick={handleSubmit}
+              disabled={
+                !form.isFieldsTouched(true) ||
+                !!form.getFieldsError().filter(({ errors }) => errors.length)
+                  .length
+              }
             >
               Save
             </Button>

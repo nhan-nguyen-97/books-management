@@ -147,6 +147,7 @@ function EditAuthor({ authorData }) {
               }}
               onClick={handleSubmit}
               disabled={
+                !form.isFieldsTouched(true) ||
                 !!form.getFieldsError().filter(({ errors }) => errors.length)
                   .length
               }

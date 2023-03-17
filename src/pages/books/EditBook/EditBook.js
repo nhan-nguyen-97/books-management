@@ -70,7 +70,6 @@ function EditBook({ bookData, authorData }) {
   };
   const handleCancel = () => {
     setIsModalOpen(false);
-    form.resetFields();
   };
 
   return (
@@ -148,6 +147,7 @@ function EditBook({ bookData, authorData }) {
               }}
               onClick={handleSubmit}
               disabled={
+                !form.isFieldsTouched(true) ||
                 !!form.getFieldsError().filter(({ errors }) => errors.length)
                   .length
               }
