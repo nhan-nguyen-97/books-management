@@ -1,0 +1,11 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6eeef;
+
+    & p {
+        line-height: 25px;
+        color: #706d6d;
+    }
+}

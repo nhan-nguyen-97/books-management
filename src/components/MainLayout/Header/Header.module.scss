@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  height: 100%;
+}
+
+.logoItem {
+  width: 40px;
+  height: 40px;
+}
+
+.userAction {
+  display: flex;
+  align-items: center;
+  border: none;
+  height: 38px;
+  font-size: 18px;
+  border-radius: 6px;
+  text-decoration: none;
+
+  p {
+    font-size: 16px;
+    margin-right: 4px;
+    font-weight: 600;
+    color: #03343d;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

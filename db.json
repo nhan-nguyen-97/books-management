@@ -1,0 +1,164 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "Dế mèn phiêu lưu ký",
+      "price": 120000,
+      "author": "Tô Hoài",
+      "published": 1941
+    },
+    {
+      "id": 2,
+      "name": "Truyện Kiều",
+      "price": 150000,
+      "author": "Nguyễn Du",
+      "published": 1820
+    },
+    {
+      "id": 3,
+      "name": "Chí Phèo",
+      "price": 100000,
+      "author": "Nam Cao",
+      "published": 1941
+    },
+    {
+      "id": 4,
+      "name": "Qua đèo Ngang",
+      "price": 140000,
+      "author": "Huyện Thanh Quan",
+      "published": null
+    },
+    {
+      "id": 5,
+      "name": "Chiếc thuyền ngoài xa",
+      "price": 80000,
+      "author": "Nguyễn Minh Châu",
+      "published": 1985
+    },
+    {
+      "id": 6,
+      "name": "Vợ nhặt",
+      "price": 70000,
+      "author": "Kim Lân",
+      "published": 1962
+    },
+    {
+      "id": 7,
+      "name": "Chữ người tử tù",
+      "price": 150000,
+      "author": "Nguyễn Tuân",
+      "published": 1939
+    },
+    {
+      "id": 8,
+      "name": "Tắt đèn",
+      "price": 60000,
+      "author": "Ngô Tất Tố",
+      "published": 1937
+    },
+    {
+      "id": 9,
+      "name": "Việt Bắc",
+      "price": 90000,
+      "author": "Tố Hữu",
+      "published": 1954
+    },
+    {
+      "id": 11,
+      "name": "Lão Hạt",
+      "price": 85000,
+      "author": "Nam Cao",
+      "published": 1943
+    },
+    {
+      "name": "Sóng",
+      "price": 60000,
+      "author": "Ngô Tất Tố",
+      "published": 1968,
+      "id": 12
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Ngô Tất Tố",
+      "gender": "male",
+      "DOB": "1894",
+      "died": "24/04/1954",
+      "placeOrigin": "Đông Anh"
+    },
+    {
+      "id": 2,
+      "name": "Xuân Diệu",
+      "gender": "male",
+      "DOB": "02/02/1916",
+      "died": "18/12/1985",
+      "placeOrigin": "Tuy Phước"
+    },
+    {
+      "id": 3,
+      "name": "Tố Hữu",
+      "gender": "male",
+      "DOB": "04/10/1920",
+      "died": "09/12/2002",
+      "placeOrigin": "Quảng Điền"
+    },
+    {
+      "id": 4,
+      "name": "Huyện Thanh Quan",
+      "gender": "female",
+      "DOB": "1805",
+      "died": "1848",
+      "placeOrigin": null
+    },
+    {
+      "name": "Tô Hoài",
+      "DOB": "27/09/1920",
+      "died": "06/07/2014",
+      "gender": "male",
+      "placeOrigin": "Kim Bài",
+      "id": 5
+    },
+    {
+      "name": "Xuân Quỳnh",
+      "DOB": "06/10/1942",
+      "died": "29/08/1988",
+      "gender": "female",
+      "placeOrigin": "Hà Đông",
+      "id": 6
+    },
+    {
+      "name": "12321312323",
+      "DOB": "",
+      "died": "",
+      "gender": "male",
+      "placeOrigin": "",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "fullName": "Nhân Nguyễn",
+      "gender": "female",
+      "email": "nhannguyen@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "admin2",
+      "password": "123123",
+      "fullName": "Nhân Nguyễn",
+      "gender": "female",
+      "email": "nhannguyen@gmail.com"
+    },
+    {
+      "username": "admin213123",
+      "fullName": "123123123",
+      "gender": "female",
+      "email": "",
+      "id": 5
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+.wrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: var(--header-height);
+  background-color: #8fd7d7;
+  margin-top: 0;
+}
+
+.body {
+  display: flex;
+  height: calc(100vh - var(--header-height));
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mainContent {
+  background-color: #99b9bf;
+  flex: 1;
+}
+
+.footer {
+  height: var(--footer-height);
+}
