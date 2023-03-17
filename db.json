@@ -78,10 +78,10 @@
       "id": 12
     },
     {
-      "name": "2313123",
-      "price": 452345,
-      "author": "",
-      "published": "",
+      "name": "2131213",
+      "price": 1,
+      "author": "Ngô Tất Tố",
+      "published": 2020,
       "id": 13
     }
   ],
@@ -160,7 +160,6 @@
     },
     {
       "username": "admin3",
-      "password": "123123",
       "fullName": "Admin 3",
       "gender": "male",
       "email": "",

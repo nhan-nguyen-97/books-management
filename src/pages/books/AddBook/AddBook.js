@@ -20,7 +20,7 @@ function AddBook({ listAuthors }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [author, setAuthor] = useState("");
   const [published, setPublished] = useState("");
 

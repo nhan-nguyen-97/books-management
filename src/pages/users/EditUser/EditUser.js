@@ -25,14 +25,16 @@ function EditUser({ userData }) {
     username,
     fullName: userData.fullName,
     gender: userData.gender,
-    email: userData.email
-  }
+    email: userData.email,
+  };
 
   const formValues = { username, fullName, gender, email };
+  console.log(formValues.gender);
 
   const showModal = () => {
     setIsModalOpen(true);
     form.setFieldsValue(initialValues);
+    console.log(initialValues.gender);
   };
   const handleSubmit = () => {
     if (fullName) {
@@ -48,6 +50,9 @@ function EditUser({ userData }) {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
+    setFullName(userData.fullName);
+    setGender(userData.gender);
+    setEmail(userData.email);
     setIsModalOpen(false);
   };
   return (
@@ -131,7 +136,7 @@ function EditUser({ userData }) {
               }}
               onClick={handleSubmit}
               disabled={
-                !form.isFieldsTouched(true) ||
+                !form.isFieldsTouched(false) ||
                 !!form.getFieldsError().filter(({ errors }) => errors.length)
                   .length
               }

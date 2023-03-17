@@ -31,18 +31,21 @@ function EditBook({ bookData, authorData }) {
   const [author, setAuthor] = useState(bookData.author);
   const [published, setPublished] = useState(bookData.published);
 
+  const yearPublished = isNaN(dayjs(`${bookData.published}`, "YYYY").$y) ? "" : dayjs(`${bookData.published}`, "YYYY").$y;
+  
   const initialValues = {
     name: bookData.name,
     price: bookData.price,
     author: bookData.author,
-    published: dayjs(`${bookData.published}`, "YYYY"),
+    published: !isNaN(yearPublished) ? "" : yearPublished,
   };
-
+  
   const formValues = { name, price, author, published };
   const id = bookData.id;
-
+  
   const showModal = () => {
     setIsModalOpen(true);
+    console.log(yearPublished);
     form.setFieldsValue(initialValues);
   };
 
@@ -55,6 +58,10 @@ function EditBook({ bookData, authorData }) {
     });
     return options;
   });
+
+  const changeYear = (data) => {
+    setPublished(data.$y)
+  };
 
   const handleSubmit = () => {
     dispatch(updateBookStart({ id, formValues }));
@@ -131,7 +138,7 @@ function EditBook({ bookData, authorData }) {
             <DatePicker
               format="YYYY"
               value={published}
-              onChange={(data) => setPublished(data.$y)}
+              onChange={changeYear}
               picker="year"
             />
           </Form.Item>
@@ -147,7 +154,7 @@ function EditBook({ bookData, authorData }) {
               }}
               onClick={handleSubmit}
               disabled={
-                !form.isFieldsTouched(true) ||
+                !form.isFieldsTouched(false) ||
                 !!form.getFieldsError().filter(({ errors }) => errors.length)
                   .length
               }
