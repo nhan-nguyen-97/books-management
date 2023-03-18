@@ -22,11 +22,11 @@ function AddUser({ listUsers }) {
   const formValues = { username, password, fullName, gender, email };
 
   const handleSubmit = () => {
-    let userExist = listUsers.filter((user) => {
+    const userExist = listUsers.find((user) => {
       return username === user.username;
     });
     if (username.length >= 6 && password && fullName) {
-      if (userExist.length === 0) {
+      if (!userExist) {
         dispatch(createUserStart(formValues));
         setIsModalOpen(false);
         setTimeout(() => {

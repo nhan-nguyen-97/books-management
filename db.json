@@ -167,6 +167,14 @@
       "gender": "male",
       "email": "",
       "id": 3
+    },
+    {
+      "username": "admin4",
+      "password": "123123",
+      "fullName": "123123",
+      "gender": "male",
+      "email": "",
+      "id": 4
     }
   ]
 }
