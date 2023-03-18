@@ -22,13 +22,12 @@ export default function Login() {
 
   const handleLoginClick = () => {
     if (username && password) {
-      let userPass = users.filter((user) => {
+      const userPass = users.find((user) => {
         return username === user.username && password === user.password;
       });
-      const userProfile = userPass[0];
-      if (userPass.length === 1) {
-        localStorage.setItem("id_token", `${userProfile.id}`);
-        localStorage.setItem("user_profile", JSON.stringify(userProfile));
+      if (userPass) {
+        localStorage.setItem("id_token", `${userPass.id}`);
+        localStorage.setItem("user_profile", JSON.stringify(userPass));
         navigate("/");
       } else {
         toast.error("Username or Password do not match");

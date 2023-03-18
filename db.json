@@ -146,6 +146,7 @@
   "users": [
     {
       "username": "admin",
+      "password": "admin",
       "fullName": "Nguyễn Trọng Nhân",
       "gender": "male",
       "email": "nhan030797@gmail.com",
@@ -153,6 +154,7 @@
     },
     {
       "username": "admin2",
+      "password": "admin",
       "fullName": "Nhân Nguyễn",
       "gender": "female",
       "email": "nhannguyen@gmail.com",
@@ -160,6 +162,7 @@
     },
     {
       "username": "admin3",
+      "password": "admin",
       "fullName": "Admin 3",
       "gender": "male",
       "email": "",
