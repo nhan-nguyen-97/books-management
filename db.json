@@ -57,11 +57,11 @@
       "published": 1937
     },
     {
-      "id": 9,
       "name": "Việt Bắc",
       "price": 90000,
       "author": "Tố Hữu",
-      "published": 1954
+      "published": 1954,
+      "id": 9
     },
     {
       "id": 11,
@@ -78,8 +78,8 @@
       "id": 12
     },
     {
-      "name": "2131213",
-      "price": 1000,
+      "name": "213121",
+      "price": 4000,
       "author": "Ngô Tất Tố",
       "published": 2020,
       "id": 13
@@ -145,12 +145,12 @@
   ],
   "users": [
     {
+      "id": 1,
       "username": "admin",
-      "password": "admin",
-      "fullName": "Nguyễn Trọng Nhân",
-      "gender": "male",
-      "email": "nhan030797@gmail.com",
-      "id": 1
+      "password": "admin1",
+      "fullName": "Nhân",
+      "gender": "female",
+      "email": "nhan123@gmail.com"
     },
     {
       "username": "admin2",

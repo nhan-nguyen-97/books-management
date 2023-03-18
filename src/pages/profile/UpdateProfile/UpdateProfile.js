@@ -15,32 +15,46 @@ function UpdateProfile({ userInfo }) {
   const [fullName, setFullName] = useState(userInfo.fullName);
   const [gender, setGender] = useState(userInfo.gender);
   const [email, setEmail] = useState(userInfo.email);
-
-  const initialValues = {
-    fullName: userInfo.fullName,
-    gender: userInfo.gender,
-    email: userInfo.email
-  }
-
   const id = userInfo.id;
   const userId = userInfo.id;
   const username = userInfo.username;
   const password = userInfo.password;
+  console.log("FullName", userInfo.fullName);
 
-  const formValues = { id, username, password, fullName, gender, email };
+  const initialValues = {
+    id,
+    username,
+    password,
+    fullName: userInfo.fullName,
+    gender: userInfo.gender,
+    email: userInfo.email,
+  };
+  console.log("Init: ", initialValues);
+
+  const formValues = {
+    id,
+    username,
+    password,
+    fullName,
+    gender,
+    email,
+  };
+  console.log("FormValue: ", formValues);
 
   const showModal = () => {
     setIsModalOpen(true);
     form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
-    dispatch(updateUserStart({ id, formValues }));
-    localStorage.setItem("user_profile", JSON.stringify(formValues));
-    setIsModalOpen(false);
-    setTimeout(() => {
-      dispatch(loadUserByIdStart(userId));
-      toast.success("Update profile successfully");
-    }, 200);
+    if (fullName) {
+      dispatch(updateUserStart({ id, formValues }));
+      localStorage.setItem("user_profile", JSON.stringify(formValues));
+      setIsModalOpen(false);
+      setTimeout(() => {
+        dispatch(loadUserByIdStart(userId));
+        toast.success("Update profile successfully");
+      }, 200);
+    }
   };
   const handleOk = () => {
     setIsModalOpen(false);
@@ -118,6 +132,11 @@ function UpdateProfile({ userInfo }) {
                 margin: "0 8px",
               }}
               onClick={handleSubmit}
+              disabled={
+                !form.isFieldsTouched(false) ||
+                !!form.getFieldsError().filter(({ errors }) => errors.length)
+                  .length
+              }
             >
               Save
             </Button>

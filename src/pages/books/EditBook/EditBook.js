@@ -47,7 +47,7 @@ function EditBook({ bookData, authorData }) {
 
   const showModal = () => {
     setIsModalOpen(true);
-    console.log(yearPublished);
+    // console.log(yearPublished);
     form.setFieldsValue(initialValues);
   };
 
