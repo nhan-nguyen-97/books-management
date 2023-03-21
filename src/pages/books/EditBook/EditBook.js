@@ -30,6 +30,7 @@ function EditBook({ bookData, authorData }) {
   const [price, setPrice] = useState(bookData.price);
   const [author, setAuthor] = useState(bookData.author);
   const [published, setPublished] = useState(bookData.published);
+  const id = bookData.id;
 
   const yearPublished = isNaN(dayjs(`${bookData.published}`, "YYYY").$y)
     ? ""
@@ -43,8 +44,6 @@ function EditBook({ bookData, authorData }) {
   };
 
   const formValues = { name, price, author, published };
-  const id = bookData.id;
-
   const showModal = () => {
     setIsModalOpen(true);
     // console.log(yearPublished);

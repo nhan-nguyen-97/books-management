@@ -19,7 +19,7 @@ function Profile() {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user_profile"));
     dispatch(loadUserByIdStart(userInfo.id));
-  }, [dispatch]);
+  },[dispatch]);
   return (
     <PrivateRoute>
       <MainLayout>
@@ -41,7 +41,7 @@ function Profile() {
                 </Descriptions.Item>
                 <Descriptions.Item label="Avatar">No Image</Descriptions.Item>
               </Descriptions>
-              <UpdateProfile />
+              <UpdateProfile userInfo={users} />
               <ChangePassword userInfo={users} />
             </div>
           </div>
