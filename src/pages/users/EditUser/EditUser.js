@@ -28,6 +28,8 @@ function EditUser({ userData }) {
     gender: userData.gender,
     email: userData.email,
   };
+  console.log("FullName", fullName);
+
   const formValues = { id, username, password, fullName, gender, email };
   console.log(formValues);
   const showModal = () => {

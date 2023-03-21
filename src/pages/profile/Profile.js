@@ -41,7 +41,7 @@ function Profile() {
                 </Descriptions.Item>
                 <Descriptions.Item label="Avatar">No Image</Descriptions.Item>
               </Descriptions>
-              <UpdateProfile userInfo={users} />
+              <UpdateProfile />
               <ChangePassword userInfo={users} />
             </div>
           </div>

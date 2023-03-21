@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Input, Form, Radio } from "antd";
 import { toast } from "react-toastify";
 
@@ -8,29 +8,24 @@ import {
   updateUserStart,
 } from "../../../redux/actions/usersAction";
 
-function UpdateProfile({ userInfo }) {
+function UpdateProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const [fullName, setFullName] = useState(userInfo.fullName);
-  const [gender, setGender] = useState(userInfo.gender);
-  const [email, setEmail] = useState(userInfo.email);
-  const id = userInfo.id;
-  const userId = userInfo.id;
-  const username = userInfo.username;
-  const password = userInfo.password;
-  console.log("FullName", userInfo.fullName);
+  const { users } = useSelector((state) => state.userCurrent);
+  const [fullName, setFullName] = useState(users.fullName);
+  const [gender, setGender] = useState(users.gender);
+  const [email, setEmail] = useState(users.email);
+  const id = users.id;
+  const userId = users.id;
+  const username = users.username;
+  const password = users.password;
 
   const initialValues = {
-    // id,
-    // username,
-    // password,
-    fullName: userInfo.fullName,
-    gender: userInfo.gender,
-    email: userInfo.email,
+    fullName: users.fullName,
+    gender: users.gender,
+    email: users.email,
   };
-  console.log("Init: ", initialValues);
-
   const formValues = {
     id,
     username,
