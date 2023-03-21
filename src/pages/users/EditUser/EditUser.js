@@ -20,6 +20,7 @@ function EditUser({ userData }) {
   const [email, setEmail] = useState(userData.email);
   const id = userData.id;
   const username = userData.username;
+  const password = userData.password;
 
   const initialValues = {
     username,
@@ -27,7 +28,8 @@ function EditUser({ userData }) {
     gender: userData.gender,
     email: userData.email,
   };
-  const formValues = { username, fullName, gender, email };
+  const formValues = { id, username, password, fullName, gender, email };
+  console.log(formValues);
   const showModal = () => {
     setIsModalOpen(true);
     form.setFieldsValue(initialValues);

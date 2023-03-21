@@ -169,12 +169,12 @@
       "id": 3
     },
     {
+      "id": 4,
       "username": "admin4",
-      "password": "123123",
+      "password": "admin4",
       "fullName": "123123",
-      "gender": "male",
-      "email": "",
-      "id": 4
+      "gender": "female",
+      "email": ""
     }
   ]
 }

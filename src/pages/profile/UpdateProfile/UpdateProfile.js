@@ -22,9 +22,9 @@ function UpdateProfile({ userInfo }) {
   console.log("FullName", userInfo.fullName);
 
   const initialValues = {
-    id,
-    username,
-    password,
+    // id,
+    // username,
+    // password,
     fullName: userInfo.fullName,
     gender: userInfo.gender,
     email: userInfo.email,
