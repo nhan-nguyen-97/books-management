@@ -18,9 +18,7 @@ function EditUser({ userData }) {
   const [fullName, setFullName] = useState(userData.fullName);
   const [gender, setGender] = useState(userData.gender);
   const [email, setEmail] = useState(userData.email);
-  const id = userData.id;
-  const username = userData.username;
-  const password = userData.password;
+  const { id, username, password } = userData;
 
   const initialValues = {
     username,
@@ -28,7 +26,6 @@ function EditUser({ userData }) {
     gender: userData.gender,
     email: userData.email,
   };
-  console.log("FullName", fullName);
 
   const formValues = { id, username, password, fullName, gender, email };
   console.log(formValues);

@@ -19,7 +19,7 @@ function Profile() {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user_profile"));
     dispatch(loadUserByIdStart(userInfo.id));
-  },[dispatch]);
+  }, [dispatch]);
   return (
     <PrivateRoute>
       <MainLayout>

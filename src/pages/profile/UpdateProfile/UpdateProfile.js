@@ -16,10 +16,12 @@ function UpdateProfile({ userInfo }) {
   const [fullName, setFullName] = useState(userInfo.fullName);
   const [gender, setGender] = useState(userInfo.gender);
   const [email, setEmail] = useState(userInfo.email);
-  const id = userInfo.id;
+  const { id, username, password } = userInfo;
+
+
   const userId = userInfo.id;
-  const username = userInfo.username;
-  const password = userInfo.password;
+  
+  
 
   const initialValues = {
     fullName: userInfo.fullName,
