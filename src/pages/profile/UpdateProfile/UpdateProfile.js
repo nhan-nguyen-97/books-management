@@ -9,6 +9,7 @@ import {
 } from "../../../redux/actions/usersAction";
 
 function UpdateProfile({ userInfo }) {
+  console.log(userInfo);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
