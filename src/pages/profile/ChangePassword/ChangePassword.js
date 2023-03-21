@@ -45,15 +45,17 @@ function ChangePassword({ userInfo }) {
     form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
-    if (newPassword === confirmPassword) {
-      dispatch(updateUserStart({ id, formValues }));
-      localStorage.setItem("user_profile", JSON.stringify(formValues));
-      setIsModalOpen(false);
-      setTimeout(() => {
-        dispatch(loadUserByIdStart(userId));
-        toast.success("Change password successfully");
-      }, 200);
-    } else if (currentPassword !== password) {
+    if (currentPassword === password) {
+      if (newPassword === confirmPassword) {
+        dispatch(updateUserStart({ id, formValues }));
+        localStorage.setItem("user_profile", JSON.stringify(formValues));
+        setIsModalOpen(false);
+        setTimeout(() => {
+          dispatch(loadUserByIdStart(userId));
+          toast.success("Change password successfully");
+        }, 200);
+      }
+    } else {
       toast.error("Current password do not match");
     }
   };
