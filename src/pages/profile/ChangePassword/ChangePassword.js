@@ -16,12 +16,7 @@ function ChangePassword({ userInfo }) {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const id = userInfo.id;
-  const username = userInfo.username;
-  const fullName = userInfo.fullName;
-  const password = userInfo.password;
-  const gender = userInfo.gender;
-  const email = userInfo.email;
+  const { id, username, fullName, password, gender, email } = userInfo;
 
   const initialValues = {
     currentPassword: "",
