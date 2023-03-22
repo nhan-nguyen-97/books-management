@@ -9,7 +9,6 @@ import {
 } from "../../../redux/actions/usersAction";
 
 function UpdateProfile({ userInfo }) {
-  console.log(userInfo);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
@@ -17,11 +16,6 @@ function UpdateProfile({ userInfo }) {
   const [gender, setGender] = useState(userInfo.gender);
   const [email, setEmail] = useState(userInfo.email);
   const { id, username, password } = userInfo;
-
-
-  const userId = userInfo.id;
-  
-  
 
   const initialValues = {
     fullName: userInfo.fullName,
@@ -48,7 +42,7 @@ function UpdateProfile({ userInfo }) {
       localStorage.setItem("user_profile", JSON.stringify(formValues));
       setIsModalOpen(false);
       setTimeout(() => {
-        dispatch(loadUserByIdStart(userId));
+        dispatch(loadUserByIdStart(id));
         toast.success("Update profile successfully");
       }, 200);
     }
@@ -92,10 +86,8 @@ function UpdateProfile({ userInfo }) {
             rules={[{ required: true, message: "Enter a Full name" }]}
           >
             <Input
-              value={fullName}
-              onChange={(e) => {
-                setFullName(e.target.value);
-              }}
+              value={userInfo.fullName}
+              onChange={(e) => setFullName(e.target.value)}
             ></Input>
           </Form.Item>
           <Form.Item label="Gender" name="gender">
