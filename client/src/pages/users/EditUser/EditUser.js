@@ -4,6 +4,7 @@ import { Button, Modal, Input, Form, Radio } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { toast } from "react-toastify";
+import FileBase64 from "react-file-base64";
 
 import styles from "./EditUser.module.scss";
 import {
@@ -15,26 +16,35 @@ function EditUser({ userData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const [fullName, setFullName] = useState(userData.fullName);
-  const [gender, setGender] = useState(userData.gender);
-  const [email, setEmail] = useState(userData.email);
-  const { id, username, password } = userData;
-
+  const [data, setData] = useState({
+    id: userData.id,
+    username: userData.username,
+    password: userData.password,
+    fullName: userData.fullName,
+    gender: userData.gender,
+    email: userData.email,
+    avatar: userData.avatar,
+  });
   const initialValues = {
-    username,
+    username: userData.username,
     fullName: userData.fullName,
     gender: userData.gender,
     email: userData.email,
   };
 
-  const formValues = { id, username, password, fullName, gender, email };
-  console.log(formValues);
+  const formValues = {
+    ...data,
+    fullName: data.fullName,
+    gender: data.gender,
+    email: data.email,
+  };
   const showModal = () => {
     setIsModalOpen(true);
     form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
-    if (fullName) {
+    const id = userData.id;
+    if (data.fullName) {
       dispatch(updateUserStart({ id, formValues }));
       setIsModalOpen(false);
       setTimeout(() => {
@@ -47,9 +57,12 @@ function EditUser({ userData }) {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
-    setFullName(userData.fullName);
-    setGender(userData.gender);
-    setEmail(userData.email);
+    setData({
+      ...data,
+      fullName: userData.fullName,
+      gender: userData.gender,
+      email: userData.email,
+    });
     setIsModalOpen(false);
   };
   return (
@@ -86,7 +99,7 @@ function EditUser({ userData }) {
             required
             rules={[{ required: true, message: "Enter an Username" }]}
           >
-            <Input value={username} disabled></Input>
+            <Input value={data.username} disabled></Input>
           </Form.Item>
           <Form.Item
             label="Full name"
@@ -95,17 +108,17 @@ function EditUser({ userData }) {
             rules={[{ required: true, message: "Enter a Full name" }]}
           >
             <Input
-              value={fullName}
+              value={data.fullName}
               onChange={(e) => {
-                setFullName(e.target.value);
+                setData({ ...data, fullName: e.target.value });
               }}
             ></Input>
           </Form.Item>
           <Form.Item label="Gender" name="gender">
             <Radio.Group
-              value={gender}
+              value={data.gender}
               onChange={(e) => {
-                setGender(e.target.value);
+                setData({ ...data, gender: e.target.value });
               }}
             >
               <Radio value="male">Male</Radio>
@@ -115,12 +128,19 @@ function EditUser({ userData }) {
           <Form.Item label="Email" name="email">
             <Input
               type="email"
-              value={email}
+              value={data.email}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setData({ ...data, email: e.target.value });
               }}
             ></Input>
           </Form.Item>
+          <FileBase64
+            accept="image/*"
+            multiple={false}
+            type="file"
+            value={data.avatar}
+            onDone={({ base64 }) => setData({ ...data, avatar: base64 })}
+          />
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="cancel" onClick={handleCancel}>
               Cancel

@@ -35,3 +35,15 @@ export const updateUser = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
+
+export const deleteUser = async (req, res) => {
+  try {
+    const newUser = req.body;
+
+    const user = new UsersModel(newUser);
+    await user.deleteOne({_id: `${newUser._id}`});
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+};

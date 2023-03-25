@@ -20,6 +20,7 @@ const schema = new mongoose.Schema(
     },
     email: {
       type: String,
+      default: ""
     },
   },
   { timestamps: true }

@@ -17,7 +17,7 @@ function Header() {
 
   const handleLogout = () => {
     localStorage.removeItem("id_token");
-    localStorage.removeItem("user_profile")
+    localStorage.removeItem("user_profile");
     navigate("/login");
   };
 
@@ -50,7 +50,7 @@ function Header() {
         <p>{userInfo.fullName}</p>
         <Dropdown menu={{ items }} placement="bottomLeft" arrow>
           <img
-            src={userInfo.avatar || noAvatar}
+            src={userInfo.avatar ? `${userInfo.avatar}` : `${noAvatar}`}
             className={styles.avatar}
             alt="Avatar"
           ></img>

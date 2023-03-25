@@ -60,7 +60,7 @@ function* onLoadUserByIdStartAsync(userId) {
 
 function* onLoadUserById() {
   while (true) {
-    const {payload: userId} = yield take(types.LOAD_USER_BY_ID_START)
+    const { payload: userId } = yield take(types.LOAD_USER_BY_ID_START);
     yield call(onLoadUserByIdStartAsync, userId);
   }
 }
@@ -69,6 +69,7 @@ function* onCreateUserStartAsync({ payload }) {
   try {
     const response = yield call(createUserApi, payload);
     if (response.status === 200) {
+      yield delay(200);
       yield put(createUserSuccess(response.data));
     }
   } catch (error) {

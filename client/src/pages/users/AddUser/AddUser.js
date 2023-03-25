@@ -1,7 +1,8 @@
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Modal, Input, Form, Radio } from "antd";
-// import { UploadOutlined } from "@ant-design/icons";
+import FileBase64 from "react-file-base64";
+
 import { toast } from "react-toastify";
 import {
   createUserStart,
@@ -12,22 +13,22 @@ function AddUser({ listUsers }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [gender, setGender] = useState("male");
-  const [email, setEmail] = useState("");
-  // const [avatar, setAvatar] = useState("");
-
-  const formValues = { username, password, fullName, gender, email };
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+    fullName: "",
+    gender: "male",
+    email: "",
+    avatar: "",
+  });
 
   const handleSubmit = () => {
     const userExist = listUsers.find((user) => {
-      return username === user.username;
+      return data.username === user.username;
     });
-    if (username.length >= 6 && password && fullName) {
+    if (data.username.length >= 6 && data.password && data.fullName) {
       if (!userExist) {
-        dispatch(createUserStart(formValues));
+        dispatch(createUserStart(data));
         setIsModalOpen(false);
         setTimeout(() => {
           dispatch(loadUsersStart());
@@ -79,6 +80,7 @@ function AddUser({ listUsers }) {
             span: 14,
           }}
           layout="horizontal"
+          initialValues={{ gender: "male" }}
         >
           <Form.Item
             label="Username"
@@ -95,9 +97,9 @@ function AddUser({ listUsers }) {
           >
             <Input
               autoComplete="false"
-              value={username}
+              value={data.username}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setData({ ...data, username: e.target.value });
               }}
             ></Input>
           </Form.Item>
@@ -115,9 +117,9 @@ function AddUser({ listUsers }) {
             ]}
           >
             <Input.Password
-              value={password}
+              value={data.password}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setData({ ...data, password: e.target.value });
               }}
             ></Input.Password>
           </Form.Item>
@@ -128,17 +130,17 @@ function AddUser({ listUsers }) {
             rules={[{ required: true, message: "Enter a Full name" }]}
           >
             <Input
-              value={fullName}
+              value={data.fullName}
               onChange={(e) => {
-                setFullName(e.target.value);
+                setData({ ...data, fullName: e.target.value });
               }}
             ></Input>
           </Form.Item>
           <Form.Item label="Gender" name="gender">
             <Radio.Group
-              value={gender}
+              value={data.gender}
               onChange={(e) => {
-                setGender(e.target.value);
+                setData({ ...data, gender: e.target.value });
               }}
             >
               <Radio value="male">Male</Radio>
@@ -151,54 +153,19 @@ function AddUser({ listUsers }) {
             rules={[{ type: "email", message: "Email is not valid" }]}
           >
             <Input
-              value={email}
+              value={data.email}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setData({ ...data, email: e.target.value });
               }}
             ></Input>
           </Form.Item>
-          {/* <Form.Item
-            label="Avatar"
-            name="avatar"
-            valuePropName="fileList"
-            getValueFromEvent={(event) => {
-              return event?.fileList;
-            }}
-            rules={[
-              {
-                validator(_, fileList) {
-                  return new Promise((resolve, reject) => {
-                    if (fileList[0].size > 2000000) {
-                      reject("Image size must be less than 2MB");
-                    } else {
-                      resolve("Successfully");
-                    }
-                  });
-                },
-              },
-            ]}
-          >
-            <Upload
-              // action={"http://localhost:3000/users"}
-              customRequest={(info) => {
-                setAvatar(info.file.uid);
-              }}
-              maxCount={1}
-              listType="picture"
-              accept=".png, .jpeg, .jpg"
-              beforeUpload={(file) => {
-                return new Promise((resolve, reject) => {
-                  if (file.size > 2000000) {
-                    reject("Image size must be less 2MB");
-                  } else {
-                    resolve("Successfully");
-                  }
-                });
-              }}
-            >
-              <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
-          </Form.Item> */}
+          <FileBase64
+            accept="image/*"
+            multiple={false}
+            type="file"
+            value={data.avatar}
+            onDone={({ base64 }) => setData({ ...data, avatar: base64 })}
+          />
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" onClick={handleCancel}>
               Cancel

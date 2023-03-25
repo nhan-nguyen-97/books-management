@@ -2,20 +2,23 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotevn from "dotenv";
 
 import users from "./routers/users.js";
+
+dotevn.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const URI =
-  "mongodb+srv://nhan030797:k3Wl0xZtQS71M1q1@cluster0.0ehdowm.mongodb.net/?retryWrites=true&w=majority";
+const URI = process.env.DATABASE_URL;
 
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use(cors());
 
 app.get("/users", users);
+app.post("/users", users);
 
 mongoose
   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })

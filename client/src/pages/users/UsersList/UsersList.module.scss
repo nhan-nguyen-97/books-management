@@ -2,7 +2,13 @@
   text-transform: capitalize;
 }
 
+.avatar {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 
-
-
-
+  &.ant-table-cell {
+    padding: 0px;
+  }
+}
