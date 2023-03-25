@@ -36,6 +36,7 @@ function UsersList({ listUsers }) {
         title="Created at"
         dataIndex={moment(listUsers[0].createdAt)}
         key="createdAt"
+        render={(_,record) => (moment(record.createdAt))}
       /> */}
       <Column
         title="Action"

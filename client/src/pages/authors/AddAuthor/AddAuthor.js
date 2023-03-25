@@ -12,13 +12,21 @@ function AddAuthor() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const [name, setName] = useState("");
-  const [DOB, setDOB] = useState("");
-  const [died, setDied] = useState("");
-  const [gender, setGender] = useState("male");
-  const [placeOrigin, setPlaceOrigin] = useState("");
+  const [data, setData] = useState({
+    name: "",
+    DOB: "",
+    died: "",
+    gender: "male",
+    placeOrigin: "",
+  });
 
-  const formValues = { name, DOB, died, gender, placeOrigin };
+  const initialValues = {
+    name: "",
+    DOB: "",
+    died: "",
+    gender: "male",
+    placeOrigin: "",
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -33,9 +41,9 @@ function AddAuthor() {
   };
 
   const handleSubmit = () => {
-    if (name) {
-      dispatch(createAuthorStart(formValues));
-      toast.success("Add author successfully")
+    if (data.name) {
+      dispatch(createAuthorStart(data));
+      toast.success("Add author successfully");
       setIsModalOpen(false);
       setTimeout(() => {
         dispatch(loadAuthorsStart());
@@ -70,6 +78,7 @@ function AddAuthor() {
           style={{
             maxWidth: 600,
           }}
+          initialValues={initialValues}
         >
           <Form.Item
             label="Name"
@@ -78,31 +87,35 @@ function AddAuthor() {
             rules={[{ required: true, message: "Enter an Username" }]}
           >
             <Input
-              value={name}
+              value={data.name}
               onChange={(e) => {
-                setName(e.target.value);
+                setData({ ...data, name: e.target.value });
               }}
             ></Input>
           </Form.Item>
           <Form.Item name="DOB" label="Birthday">
             <DatePicker
               format="DD/MM/YYYY"
-              value={DOB}
-              onChange={(_, dateString) => setDOB(dateString)}
+              value={data.DOB}
+              onChange={(_, dateString) =>
+                setData({ ...data, DOB: dateString })
+              }
             />
           </Form.Item>
           <Form.Item name="died" label="Died">
             <DatePicker
               format="DD/MM/YYYY"
-              value={died}
-              onChange={(_, dateString) => setDied(dateString)}
+              value={data.died}
+              onChange={(_, dateString) =>
+                setData({ ...data, died: dateString })
+              }
             />
           </Form.Item>
           <Form.Item label="Gender" name="gender">
             <Radio.Group
-              value={gender}
+              value={data.gender}
               onChange={(e) => {
-                setGender(e.target.value);
+                setData({ ...data, gender: e.target.value });
               }}
             >
               <Radio value="male">Male</Radio>
@@ -111,8 +124,10 @@ function AddAuthor() {
           </Form.Item>
           <Form.Item label="Origin" name="placeOrigin">
             <Input
-              value={placeOrigin}
-              onChange={(e) => setPlaceOrigin(e.target.value)}
+              value={data.placeOrigin}
+              onChange={(e) =>
+                setData({ ...data, placeOrigin: e.target.value })
+              }
             ></Input>
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
