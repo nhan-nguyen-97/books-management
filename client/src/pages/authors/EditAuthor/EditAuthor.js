@@ -15,14 +15,24 @@ import {
 dayjs.extend(customParseFormat);
 
 function EditAuthor({ authorData }) {
+  console.log(authorData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const [name, setName] = useState(authorData.name);
-  const [DOB, setDOB] = useState(authorData.DOB);
-  const [died, setDied] = useState(authorData.died);
-  const [gender, setGender] = useState(authorData.gender);
-  const [placeOrigin, setPlaceOrigin] = useState(authorData.placeOrigin);
+  const [data, setData] = useState({
+    id: authorData.id,
+    name: authorData.name,
+    DOB: authorData.DOB,
+    died: authorData.died,
+    gender: authorData.gender,
+    placeOrigin: authorData.placeOrigin,
+  });
+  console.log(data);
+  // const [name, setName] = useState(authorData.name);
+  // const [DOB, setDOB] = useState(authorData.DOB);
+  // const [died, setDied] = useState(authorData.died);
+  // const [gender, setGender] = useState(authorData.gender);
+  // const [placeOrigin, setPlaceOrigin] = useState(authorData.placeOrigin);
 
   const initialValues = {
     name: authorData.name,
@@ -32,17 +42,20 @@ function EditAuthor({ authorData }) {
     placeOrigin: authorData.placeOrigin,
   };
 
-  const formValues = { name, DOB, died, gender, placeOrigin };
+  const formValues = {
+    ...data,
+    name: data.name,
+    DOB: data.DOB,
+    died: data.died,
+    gender: data.gender,
+    placeOrigin: data.placeOrigin,
+  };
 
   const id = authorData.id;
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({
-      name: authorData.name,
-      gender,
-      placeOrigin,
-    });
+    form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
     dispatch(updateAuthorStart({ id, formValues }));
@@ -55,13 +68,17 @@ function EditAuthor({ authorData }) {
   };
   const handleOk = () => {
     setIsModalOpen(false);
+    form.resetFields();
   };
   const handleCancel = () => {
-    setName(authorData.name);
-    setDOB(dayjs(`${authorData.DOB}`, "DD/MM/YYYY"));
-    setDied(dayjs(`${authorData.died}`, "DD/MM/YYYY"));
-    setGender(authorData.gender);
-    setPlaceOrigin(authorData.placeOrigin);
+    setData({
+      ...data,
+      name: authorData.name,
+      DOB: dayjs(`${authorData.DOB}`, "DD/MM/YYYY"),
+      died: dayjs(`${authorData.died}`, "DD/MM/YYYY"),
+      gender: authorData.gender,
+      placeOrigin: authorData.placeOrigin,
+    });
     setIsModalOpen(false);
   };
 
@@ -103,31 +120,35 @@ function EditAuthor({ authorData }) {
             rules={[{ required: true, message: "Enter an Username" }]}
           >
             <Input
-              value={name}
+              value={data.name}
               onChange={(e) => {
-                setName(e.target.value);
+                setData({ ...data, name: e.target.value });
               }}
             />
           </Form.Item>
           <Form.Item name="DOB" label="Birthday">
             <DatePicker
               format="DD/MM/YYYY"
-              value={DOB}
-              onChange={(_, dateString) => setDOB(dateString)}
+              value={data.DOB}
+              onChange={(_, dateString) =>
+                setData({ ...data, DOB: dateString })
+              }
             />
           </Form.Item>
           <Form.Item name="died" label="Died">
             <DatePicker
               format="DD/MM/YYYY"
-              value={died}
-              onChange={(_, dateString) => setDied(dateString)}
+              value={data.died}
+              onChange={(_, dateString) =>
+                setData({ ...data, died: dateString })
+              }
             />
           </Form.Item>
           <Form.Item label="Gender" name="gender">
             <Radio.Group
-              value={gender}
+              value={data.gender}
               onChange={(e) => {
-                setGender(e.target.value);
+                setData({ ...data, gender: e.target.value });
               }}
             >
               <Radio value="male">Male</Radio>
@@ -136,8 +157,10 @@ function EditAuthor({ authorData }) {
           </Form.Item>
           <Form.Item label="Origin" name="placeOrigin">
             <Input
-              value={placeOrigin}
-              onChange={(e) => setPlaceOrigin(e.target.value)}
+              value={data.placeOrigin}
+              onChange={(e) =>
+                setData({ ...data, placeOrigin: e.target.value })
+              }
             ></Input>
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

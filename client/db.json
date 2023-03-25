@@ -135,12 +135,12 @@
       "id": 6
     },
     {
-      "name": "Nhân 1",
+      "id": 7,
+      "name": "nhan1",
       "DOB": "",
       "died": "",
-      "gender": "male",
-      "placeOrigin": "",
-      "id": 7
+      "gender": "female",
+      "placeOrigin": ""
     }
   ],
   "users": [
