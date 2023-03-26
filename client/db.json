@@ -83,6 +83,30 @@
       "author": "Ngô Tất Tố",
       "published": 2020,
       "id": 13
+    },
+    {
+      "$L": "en",
+      "$d": "2029-03-26T03:44:24.503Z",
+      "$x": {},
+      "$y": 2029,
+      "$M": 2,
+      "$D": 26,
+      "$W": 1,
+      "$H": 10,
+      "$m": 44,
+      "$s": 24,
+      "$ms": 503,
+      "published": 2029,
+      "name": "sách 1q",
+      "price": null,
+      "id": 14
+    },
+    {
+      "name": "12321",
+      "price": 4000,
+      "author": "Xuân Diệu",
+      "published": "2025",
+      "id": 15
     }
   ],
   "authors": [

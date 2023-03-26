@@ -19,10 +19,12 @@ function AddBook({ listAuthors }) {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [author, setAuthor] = useState("");
-  const [published, setPublished] = useState("");
+  const [data, setData] = useState({
+    name: "",
+    price: "",
+    author: "",
+    published: "",
+  });
 
   const initialValues = {
     name: "",
@@ -30,8 +32,6 @@ function AddBook({ listAuthors }) {
     author: "",
     published: "",
   };
-
-  const formValues = { name, price, author, published };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -54,8 +54,8 @@ function AddBook({ listAuthors }) {
   });
 
   const handleSubmit = () => {
-    if (name) {
-      dispatch(createBookStart(formValues));
+    if (data.name) {
+      dispatch(createBookStart(data));
       toast.success("Add book successfully");
       setIsModalOpen(false);
       setTimeout(() => {
@@ -101,32 +101,33 @@ function AddBook({ listAuthors }) {
             rules={[{ required: true, message: "Please enter Name" }]}
           >
             <Input
-              value={name}
+              value={data.name}
               onChange={(e) => {
-                setName(e.target.value);
+                setData({ ...data, name: e.target.value });
               }}
             ></Input>
           </Form.Item>
           <Form.Item label="Price" name={"price"}>
             <InputNumber
-              value={price}
+              value={data.price}
               min={0}
               max={10000000}
               step={1000}
               style={{ width: 275 }}
-              onChange={(value) => setPrice(value)}
+              onChange={(value) => setData({ ...data, price: value })}
             />
           </Form.Item>
           <Form.Item label="Author" name={"author"}>
             <Select
               options={options}
-              onChange={(value) => setAuthor(value)}
+              onChange={(value) => setData({ ...data, author: value })}
             ></Select>
           </Form.Item>
           <Form.Item label="Published" name={"published"}>
             <DatePicker
-              value={published}
-              onChange={(data) => setPublished(data.$y)}
+            format="YYYY"
+              value={data.published}
+              onChange={(_, dateString) => setData({ ...data, published: dateString })}
               picker="year"
             />
           </Form.Item>
