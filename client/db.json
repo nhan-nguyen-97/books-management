@@ -85,28 +85,102 @@
       "id": 13
     },
     {
-      "$L": "en",
-      "$d": "2029-03-26T03:44:24.503Z",
-      "$x": {},
-      "$y": 2029,
-      "$M": 2,
-      "$D": 26,
-      "$W": 1,
-      "$H": 10,
-      "$m": 44,
-      "$s": 24,
-      "$ms": 503,
-      "published": 2029,
-      "name": "sách 1q",
-      "price": null,
+      "name": "sách 1",
+      "price": "",
+      "author": "",
+      "published": "2020",
       "id": 14
     },
     {
-      "name": "12321",
-      "price": 4000,
-      "author": "Xuân Diệu",
-      "published": "2025",
+      "name": "sách 2",
+      "price": "",
+      "author": "",
+      "published": "2020",
       "id": 15
+    },
+    {
+      "name": "sách 3",
+      "price": "",
+      "author": "Ngô Tất Tố",
+      "published": "2020",
+      "id": 16
+    },
+    {
+      "name": "sách 1",
+      "price": "",
+      "author": "Ngô Tất Tố",
+      "published": "2020",
+      "id": 17
+    },
+    {
+      "name": "sách 4",
+      "price": "",
+      "author": "",
+      "published": "",
+      "id": 18
+    },
+    {
+      "name": "sách 5",
+      "price": 3000,
+      "author": "",
+      "published": "",
+      "id": 19
+    },
+    {
+      "name": "sách 6",
+      "price": 3000,
+      "author": "",
+      "published": "",
+      "id": 20
+    },
+    {
+      "name": "adsd",
+      "price": 3000,
+      "author": "",
+      "published": "2020",
+      "id": 21
+    },
+    {
+      "name": "á",
+      "price": 1000,
+      "author": "",
+      "published": "2020",
+      "id": 22
+    },
+    {
+      "name": "21321321",
+      "price": 2000,
+      "author": "Ngô Tất Tố",
+      "published": "2028",
+      "id": 23
+    },
+    {
+      "name": "213213",
+      "price": 2000,
+      "author": "Ngô Tất Tố",
+      "published": "2028",
+      "id": 24
+    },
+    {
+      "name": "213123",
+      "price": 0,
+      "author": "",
+      "published": "",
+      "id": 25
+    },
+    {
+      "name": "213123",
+      "price": 3000,
+      "author": "Ngô Tất Tố",
+      "published": "2020",
+      "id": 26
+    },
+    {
+      "name": "123",
+      "price": 0,
+      "author": "",
+      "published": "",
+      "id": 27
     }
   ],
   "authors": [

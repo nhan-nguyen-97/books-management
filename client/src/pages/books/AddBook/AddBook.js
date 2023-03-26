@@ -21,7 +21,7 @@ function AddBook({ listAuthors }) {
   const [form] = Form.useForm();
   const [data, setData] = useState({
     name: "",
-    price: "",
+    price: 0,
     author: "",
     published: "",
   });
@@ -35,6 +35,7 @@ function AddBook({ listAuthors }) {
 
   const showModal = () => {
     setIsModalOpen(true);
+    form.setFieldsValue({ ...initialValues });
   };
   const handleOk = () => {
     setIsModalOpen(false);
@@ -62,6 +63,7 @@ function AddBook({ listAuthors }) {
         dispatch(loadBooksStart());
       }, 200);
       form.resetFields();
+      setData({ ...data, price: 0, author: "", published: "" });
     }
   };
 
@@ -125,9 +127,11 @@ function AddBook({ listAuthors }) {
           </Form.Item>
           <Form.Item label="Published" name={"published"}>
             <DatePicker
-            format="YYYY"
+              format="YYYY"
               value={data.published}
-              onChange={(_, dateString) => setData({ ...data, published: dateString })}
+              onChange={(_, dateString) =>
+                setData({ ...data, published: dateString })
+              }
               picker="year"
             />
           </Form.Item>
