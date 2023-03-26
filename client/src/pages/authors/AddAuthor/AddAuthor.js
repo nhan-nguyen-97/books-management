@@ -23,14 +23,13 @@ function AddAuthor() {
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({
-      gender: "male",
-    });
+    form.setFieldsValue(initialValues);
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
     form.resetFields();
+    setData(initialValues)
   };
 
   const handleSubmit = () => {
