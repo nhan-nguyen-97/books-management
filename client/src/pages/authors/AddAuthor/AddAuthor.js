@@ -12,14 +12,6 @@ function AddAuthor() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const [data, setData] = useState({
-    name: "",
-    DOB: "",
-    died: "",
-    gender: "male",
-    placeOrigin: "",
-  });
-
   const initialValues = {
     name: "",
     DOB: "",
@@ -27,6 +19,7 @@ function AddAuthor() {
     gender: "male",
     placeOrigin: "",
   };
+  const [data, setData] = useState(initialValues);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -49,6 +42,7 @@ function AddAuthor() {
         dispatch(loadAuthorsStart());
       }, 200);
       form.resetFields();
+      setData(initialValues)
     }
   };
 
