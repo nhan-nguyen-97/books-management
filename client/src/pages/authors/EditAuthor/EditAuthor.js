@@ -15,7 +15,6 @@ import {
 dayjs.extend(customParseFormat);
 
 function EditAuthor({ authorData }) {
-  console.log(authorData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
@@ -27,12 +26,6 @@ function EditAuthor({ authorData }) {
     gender: authorData.gender,
     placeOrigin: authorData.placeOrigin,
   });
-  console.log(data);
-  // const [name, setName] = useState(authorData.name);
-  // const [DOB, setDOB] = useState(authorData.DOB);
-  // const [died, setDied] = useState(authorData.died);
-  // const [gender, setGender] = useState(authorData.gender);
-  // const [placeOrigin, setPlaceOrigin] = useState(authorData.placeOrigin);
 
   const initialValues = {
     name: authorData.name,
