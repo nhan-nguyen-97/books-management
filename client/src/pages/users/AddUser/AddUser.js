@@ -13,14 +13,15 @@ function AddUser({ listUsers }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const [data, setData] = useState({
+  const initialValues = {
     username: "",
     password: "",
     fullName: "",
     gender: "male",
     email: "",
     avatar: "",
-  });
+  };
+  const [data, setData] = useState(initialValues);
 
   const handleSubmit = () => {
     const userExist = listUsers.find((user) => {
@@ -35,6 +36,7 @@ function AddUser({ listUsers }) {
           toast.success("Add user successfully");
         }, 200);
         form.resetFields();
+        setData(initialValues);
       } else {
         toast.error("Username already exist");
       }
@@ -43,7 +45,7 @@ function AddUser({ listUsers }) {
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({ gender: "male" });
+    form.setFieldsValue(initialValues);
   };
 
   const handleOk = () => {

@@ -261,28 +261,21 @@
     },
     {
       "username": "admin3",
-      "password": "admin",
-      "fullName": "Admin 3",
-      "gender": "male",
-      "email": "",
+      "password": "123123",
+      "fullName": "123123",
+      "gender": "female",
+      "email": "123@gmail.cpom",
+      "avatar": "",
       "id": 3
     },
     {
-      "id": 4,
       "username": "admin4",
-      "password": "admin4",
+      "password": "123123",
       "fullName": "123123",
-      "gender": "female",
-      "email": ""
-    },
-    {
-      "id": 5,
-      "username": "231231231",
-      "password": "231231231",
-      "fullName": "3123123",
-      "gender": "female",
+      "gender": "male",
       "email": "",
-      "avatar": ""
+      "avatar": "",
+      "id": 4
     }
   ]
 }
