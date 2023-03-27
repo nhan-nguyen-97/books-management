@@ -13,26 +13,23 @@ function ChangePassword({ userInfo }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const { id, username, fullName, password, gender, email } = userInfo;
-
   const initialValues = {
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   };
+  const [data, setData] = useState(initialValues)
+  // const [currentPassword, setCurrentPassword] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  const { id } = userInfo;
+
 
   const userId = userInfo.id;
 
   const formValues = {
-    id,
-    username,
-    password: newPassword,
-    fullName,
-    gender,
-    email,
+   ...userInfo,
+    password: data.newPassword,
   };
 
   const showModal = () => {
@@ -40,8 +37,8 @@ function ChangePassword({ userInfo }) {
     form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
-    if (currentPassword === password) {
-      if (newPassword === confirmPassword) {
+    if (data.currentPassword === userInfo.password) {
+      if (data.newPassword === data.confirmPassword) {
         dispatch(updateUserStart({ id, formValues }));
         localStorage.setItem("user_profile", JSON.stringify(formValues));
         setIsModalOpen(false);
@@ -101,9 +98,9 @@ function ChangePassword({ userInfo }) {
             <Input
               type="password"
               className={styles.input}
-              value={currentPassword}
+              value={data.currentPassword}
               onChange={(e) => {
-                setCurrentPassword(e.target.value);
+                setData({...data, currentPassword:e.target.value});
               }}
             ></Input>
           </Form.Item>
@@ -123,16 +120,16 @@ function ChangePassword({ userInfo }) {
             <Input
               type="password"
               className={styles.input}
-              value={newPassword}
+              value={data.newPassword}
               onChange={(e) => {
-                setNewPassword(e.target.value);
+                setData({...data,newPassword:e.target.value});
               }}
             ></Input>
           </Form.Item>
           <Form.Item
             label="Confirm Password"
             name="confirmPassword"
-            dependencies={[newPassword]}
+            dependencies={[data.newPassword]}
             hasFeedback
             required
             rules={[
@@ -152,9 +149,9 @@ function ChangePassword({ userInfo }) {
             <Input
               type="password"
               className={styles.input}
-              value={confirmPassword}
+              value={data.confirmPassword}
               onChange={(e) => {
-                setConfirmPassword(e.target.value);
+                setData({...data, confirmPassword:e.target.value});
               }}
             ></Input>
           </Form.Item>

@@ -12,35 +12,40 @@ function UpdateProfile({ userInfo }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const [fullName, setFullName] = useState(userInfo.fullName);
-  const [gender, setGender] = useState(userInfo.gender);
-  const [email, setEmail] = useState(userInfo.email);
-  const { id, username, password } = userInfo;
-
   const initialValues = {
     fullName: userInfo.fullName,
     gender: userInfo.gender,
     email: userInfo.email,
   };
-  const formValues = {
-    id,
-    username,
-    password,
-    fullName,
-    gender,
-    email,
-  };
-  console.log(formValues);
+  const [data, setData] = useState({
+    id: userInfo.id,
+    username: userInfo.username,
+    password: userInfo.password,
+    fullName: userInfo.fullName,
+    gender: userInfo.gender,
+    email: userInfo.email,
+    avatar: userInfo.avatar,
+  });
+  const { id } = userInfo;
 
+  const formValues = {
+    ...data,
+    fullName: data.fullName,
+    gender: data.gender,
+    email: data.email,
+  };
+
+  console.log(data);
   const showModal = () => {
     setIsModalOpen(true);
     form.setFieldsValue(initialValues);
   };
   const handleSubmit = () => {
-    if (fullName) {
+    if (data.fullName) {
       dispatch(updateUserStart({ id, formValues }));
       localStorage.setItem("user_profile", JSON.stringify(formValues));
       setIsModalOpen(false);
+      // setData(initialValues)
       setTimeout(() => {
         dispatch(loadUserByIdStart(id));
         toast.success("Update profile successfully");
@@ -86,15 +91,15 @@ function UpdateProfile({ userInfo }) {
             rules={[{ required: true, message: "Enter a Full name" }]}
           >
             <Input
-              value={userInfo.fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={data.fullName}
+              onChange={(e) => setData({ ...data, fullName: e.target.value })}
             ></Input>
           </Form.Item>
           <Form.Item label="Gender" name="gender">
             <Radio.Group
-              value={gender}
+              value={data.gender}
               onChange={(e) => {
-                setGender(e.target.value);
+                setData({ ...data, gender: e.target.value });
               }}
             >
               <Radio value="male">Male</Radio>
@@ -104,9 +109,9 @@ function UpdateProfile({ userInfo }) {
           <Form.Item label="Email" name="email">
             <Input
               type="email"
-              value={email}
+              value={data.email}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setData({ ...data, email: e.target.value });
               }}
             ></Input>
           </Form.Item>

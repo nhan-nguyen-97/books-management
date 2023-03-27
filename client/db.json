@@ -253,7 +253,7 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123123",
+      "password": "123456",
       "fullName": "Nhân Nguyễn",
       "gender": "female",
       "email": "nhan123@gmail.com",

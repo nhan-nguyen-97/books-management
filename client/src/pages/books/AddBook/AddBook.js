@@ -35,14 +35,14 @@ function AddBook({ listAuthors }) {
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({ ...initialValues });
+    form.setFieldsValue(initialValues);
   };
   const handleOk = () => {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
-    form.resetFields();
+    setData(initialValues)
   };
   // Get data Authors for Add new Book
   const options = [];
